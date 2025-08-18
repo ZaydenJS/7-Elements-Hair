@@ -2,28 +2,234 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>7 Elements Hair - Premium Hair Salon | Riverstone NSW</title>
     <meta
       name="description"
       content="Experience luxury hair services at 7 Elements Hair in Riverstone. Specializing in blonde and color correction with sustainable practices."
     />
 
-    <!-- Fonts -->
+    <!-- Performance and SEO meta tags -->
+    <meta name="theme-color" content="#f4c2c2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Critical CSS - Inlined for faster rendering -->
+    <style>
+      /* Critical above-the-fold styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        overflow-x: hidden;
+        width: 100%;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        font-family: "Inter", sans-serif;
+      }
+      :root {
+        --primary-pink: #f4c2c2;
+        --soft-pink: #f9e5e5;
+        --cream: #fdf9f7;
+        --charcoal: #2c2c2c;
+        --white: #ffffff;
+        --font-primary: "Inter", sans-serif;
+        --font-display: "Playfair Display", serif;
+      }
+
+      /* Critical navbar styles */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 15px 0;
+        transition: all 0.3s ease;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo img {
+        height: 80px;
+        max-width: 250px;
+        width: auto;
+      }
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+      .nav-link {
+        text-decoration: none;
+        color: var(--charcoal);
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      .book-btn {
+        background: var(--primary-pink);
+        color: var(--charcoal);
+        padding: 12px 24px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      /* Critical hero styles */
+      .hero {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #fdf9f7 0%,
+          #f9e5e5 50%,
+          #f4c2c2 100%
+        );
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding-top: 130px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .hero-text h1 {
+        font-family: var(--font-display);
+        font-size: 64px;
+        font-weight: 600;
+        line-height: 1.1;
+        color: var(--charcoal);
+        margin-bottom: 24px;
+      }
+      .highlight {
+        color: var(--primary-pink);
+      }
+      .hero-text p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--charcoal);
+        margin-bottom: 40px;
+      }
+      .hero-visual {
+        position: relative;
+        height: 600px;
+      }
+      .hero-image-main {
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        transform: rotate(3deg);
+      }
+      .hero-image-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Mobile critical styles */
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+        .hero {
+          padding-top: 110px;
+        }
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 50px;
+          text-align: center;
+        }
+        .hero-text h1 {
+          font-size: 52px;
+        }
+        .hero-visual {
+          height: 500px;
+        }
+        .hero-image-main {
+          height: 450px;
+          transform: rotate(0deg);
+        }
+        .logo img {
+          height: 70px;
+          max-width: 200px;
+        }
+        .navbar {
+          padding: 12px 0;
+        }
+        .container {
+          padding: 0 15px;
+        }
+      }
+    </style>
+
+    <!-- Preload and load minified CSS -->
+    <!-- Preload + render-blocking stylesheet to avoid FOUC/CLS -->
+    <link rel="preload" href="new-styles.min.css?v=20250817-2" as="style" />
+    <link rel="stylesheet" href="new-styles.min.css?v=20250817-2" />
+
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Preload critical hero image (mobile candidate) to improve LCP/SI -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="Photos/Hero-800.jpg"
+      as="image"
+      imagesrcset="Photos/Hero-800.jpg 800w, Photos/Hero.jpg 1200w"
+      imagesizes="(max-width: 768px) 100vw, 50vw"
+      fetchpriority="high"
     />
 
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//images.unsplash.com" />
 
-    <link rel="stylesheet" href="new-styles.css" />
+    <!-- Resource hints for better performance (remove heavy prefetches to cut initial payload) -->
+    <!-- Prefetch removed for Photos/Blonde.jpg and Photos/Vic.webp -->
+
+    <!-- Load Google Fonts early but non-blocking to avoid font-swap CLS -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=optional"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Removed Font Awesome stylesheet; icons are inlined as SVG below to reduce unused CSS and CLS -->
   </head>
   <body>
     <!-- Navigation -->
@@ -32,10 +238,13 @@
         <div class="logo">
           <a href="index.html">
             <img
-              src="Main Logo.png"
+              src="Main-Logo-300.png"
               alt="7 Elements Hair Logo"
               width="300"
               height="100"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
             />
           </a>
         </div>
@@ -101,14 +310,27 @@
 
           <div class="hero-visual">
             <div class="hero-image-main">
-              <img
-                src="Photos/Hero.jpg"
-                alt="Premium Hair Salon Interior"
-                width="1000"
-                height="600"
-                decoding="async"
-                loading="eager"
-              />
+              <picture>
+                <!-- Preload matches this 800w candidate to avoid double-fetch and speed LCP/SI on mobile -->
+                <source
+                  srcset="Photos/Hero-800.jpg 800w, Photos/Hero.jpg 1200w"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  media="(min-width: 769px)"
+                  width="1000"
+                  height="600"
+                />
+                <img
+                  src="Photos/Hero-800.jpg"
+                  srcset="Photos/Hero-800.jpg 800w, Photos/Hero.jpg 1200w"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  alt="Premium Hair Salon Interior"
+                  width="500"
+                  height="300"
+                  decoding="async"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+              </picture>
             </div>
 
             <div class="hero-floating-elements">
@@ -127,7 +349,7 @@
     </section>
 
     <!-- Elements Section -->
-    <section id="elements" class="elements-section">
+    <section id="elements" class="elements-section cv-auto">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">The Seven Elements</h2>
@@ -139,7 +361,18 @@
         <div class="elements-grid pyramid">
           <div class="element-card">
             <div class="element-icon">
-              <i class="fas fa-leaf"></i>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                width="32"
+                height="32"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M480 64C347 64 235 96 160 160 96 235 64 347 64 480c0 8 9 12 15 7 55-47 101-106 125-168 27-70 75-118 145-145 62-24 121-70 168-125 5-6 1-15-7-15z"
+                />
+              </svg>
             </div>
             <h3>Earth</h3>
             <p>
@@ -149,42 +382,108 @@
           </div>
           <div class="element-card">
             <div class="element-icon">
-              <i class="fas fa-wind"></i>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                width="32"
+                height="32"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M352 224H32a32 32 0 010-64h320a64 64 0 1064-64 32 32 0 0164 0 128 128 0 11-128 128zM32 288h256a64 64 0 1164 64 32 32 0 110 64 128 128 0 10-128-128H32a32 32 0 010-64z"
+                />
+              </svg>
             </div>
             <h3>Air</h3>
             <p>Meaningful connections through genuine care and attention.</p>
           </div>
           <div class="element-card">
             <div class="element-icon">
-              <i class="fas fa-tint"></i>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                width="32"
+                height="32"
+                viewBox="0 0 384 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M192 0C85 128 0 208 0 304a192 192 0 10384 0C384 208 299 128 192 0z"
+                />
+              </svg>
             </div>
             <h3>Water</h3>
             <p>A calming, tranquil atmosphere for complete relaxation.</p>
           </div>
           <div class="element-card">
             <div class="element-icon">
-              <i class="fas fa-fire"></i>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                width="32"
+                height="32"
+                viewBox="0 0 384 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M216 23c9 23 12 49-5 73-28 40-88 46-109 101-21 54 17 103 75 103 77 0 101-68 86-122 68 39 117 115 86 190-30 74-116 113-198 88C69 439 16 369 16 288 16 206 71 132 133 86c30-22 59-40 83-63z"
+                />
+              </svg>
             </div>
             <h3>Fire</h3>
             <p>Passionate hairdressing and beautiful transformations.</p>
           </div>
           <div class="element-card">
             <div class="element-icon">
-              <i class="fas fa-heart"></i>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                width="32"
+                height="32"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M462 62c-54-46-132-38-182 13L256 99l-24-24C182 24 104 16 50 62-15 117-10 217 56 278l176 160c13 12 33 12 46 0l176-160c66-61 71-161 8-216z"
+                />
+              </svg>
             </div>
             <h3>Spirit</h3>
             <p>Nurturing confidence through personalized hair artistry.</p>
           </div>
           <div class="element-card">
             <div class="element-icon">
-              <i class="fas fa-sun"></i>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                width="32"
+                height="32"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M256 152a104 104 0 100 208 104 104 0 000-208zm0-120l40 80h-80l40-80zM72 256l80-40v80l-80-40zm440 0l-80 40v-80l80 40zM256 480l-40-80h80l-40 80zM79 79l90 22-57 57-33-79zm354 0l-33 79-57-57 90-22z"
+                />
+              </svg>
             </div>
             <h3>Light</h3>
             <p>Expert color techniques for radiant transformations.</p>
           </div>
           <div class="element-card">
             <div class="element-icon">
-              <i class="fas fa-bolt"></i>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                width="32"
+                height="32"
+                viewBox="0 0 320 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M296 160H180l40-160L24 352h116l-40 160L296 160z"
+                />
+              </svg>
             </div>
             <h3>Energy</h3>
             <p>Dynamic creativity for an energizing salon experience.</p>
@@ -194,7 +493,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services-section">
+    <section id="services" class="services-section cv-auto">
       <div class="container">
         <div class="services-content">
           <div class="services-text">
@@ -206,46 +505,136 @@
               while caring for your hair's health.
             </p>
             <ul class="services-list">
-              <li><i class="fas fa-check"></i> Blonde Specialists</li>
-              <li><i class="fas fa-check"></i> Color Correction</li>
-              <li><i class="fas fa-check"></i> Sustainable Products</li>
-              <li><i class="fas fa-check"></i> Professional Consultation</li>
-              <li><i class="fas fa-check"></i> Trichology Services</li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M173 439L7 273l55-55 111 111 277-277 55 55L173 439z"
+                  />
+                </svg>
+                Blonde Specialists
+              </li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M173 439L7 273l55-55 111 111 277-277 55 55L173 439z"
+                  />
+                </svg>
+                Color Correction
+              </li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M173 439L7 273l55-55 111 111 277-277 55 55L173 439z"
+                  />
+                </svg>
+                Sustainable Products
+              </li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M173 439L7 273l55-55 111 111 277-277 55 55L173 439z"
+                  />
+                </svg>
+                Professional Consultation
+              </li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M173 439L7 273l55-55 111 111 277-277 55 55L173 439z"
+                  />
+                </svg>
+                Trichology Services
+              </li>
             </ul>
             <a href="contact.html#book" class="btn-primary"
               >Book Consultation</a
             >
           </div>
           <div class="services-image">
-            <img
-              src="Photos/Blonde.jpg"
-              alt="Hair Color and Blonde Specialist Work"
-              width="1000"
-              height="600"
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source
+                srcset="Photos/Blonde-800.jpg 800w, Photos/Blonde.jpg 1400w"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                media="(min-width: 769px)"
+                width="1000"
+                height="600"
+              />
+              <img
+                src="Photos/Blonde-800.jpg"
+                srcset="Photos/Blonde-800.jpg 800w, Photos/Blonde.jpg 1400w"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                alt="Hair Color and Blonde Specialist Work"
+                width="500"
+                height="300"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
       </div>
     </section>
 
     <!-- My Philosophy Section -->
-    <section id="philosophy" class="elements-section">
+    <section id="philosophy" class="elements-section cv-auto">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Passionate About Hair Health & Beauty</h2>
         </div>
         <div class="philosophy-hero">
           <div class="philosophy-hero-image">
-            <img
-              src="Photos/Vic.webp"
-              alt="Vic — Owner and Certified Trichologist"
-              width="1000"
-              height="600"
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source
+                srcset="Photos/Vic.webp"
+                media="(min-width: 769px)"
+                width="1000"
+                height="600"
+              />
+              <img
+                src="Photos/Vic.webp"
+                alt="Vic — Owner and Certified Trichologist"
+                width="500"
+                height="300"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </picture>
           </div>
           <div class="philosophy-hero-content">
             <div class="philosophy-text">
@@ -260,7 +649,18 @@
               <div class="philosophy-points">
                 <div class="philosophy-point">
                   <div class="point-icon">
-                    <i class="fas fa-heart"></i>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M462 62c-54-46-132-38-182 13L256 99l-24-24C182 24 104 16 50 62-15 117-10 217 56 278l176 160c13 12 33 12 46 0l176-160c66-61 71-161 8-216z"
+                      />
+                    </svg>
                   </div>
                   <div class="point-content">
                     <h4>Health First</h4>
@@ -273,7 +673,18 @@
 
                 <div class="philosophy-point">
                   <div class="point-icon">
-                    <i class="fas fa-leaf"></i>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M480 64C347 64 235 96 160 160 96 235 64 347 64 480c0 8 9 12 15 7 55-47 101-106 125-168 27-70 75-118 145-145 62-24 121-70 168-125 5-6 1-15-7-15z"
+                      />
+                    </svg>
                   </div>
                   <div class="point-content">
                     <h4>Sustainable Beauty</h4>
@@ -286,7 +697,18 @@
 
                 <div class="philosophy-point">
                   <div class="point-icon">
-                    <i class="fas fa-users"></i>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 640 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M96 224a80 80 0 110-160 80 80 0 010 160zm224-80a80 80 0 100-160 80 80 0 000 160zm224 80a80 80 0 110-160 80 80 0 010 160zM0 480c0-88 72-160 160-160s160 72 160 160v32H0v-32zm320 32v-32c0-54 29-102 73-129 22-14 48-23 75-23 88 0 160 72 160 160v24H320z"
+                      />
+                    </svg>
                   </div>
                   <div class="point-content">
                     <h4>Personal Connection</h4>
@@ -304,7 +726,7 @@
     </section>
 
     <!-- Sustainability Section -->
-    <section id="sustainability" class="services-section">
+    <section id="sustainability" class="services-section cv-auto">
       <div class="container">
         <div class="services-content">
           <div class="services-text">
@@ -316,29 +738,94 @@
               and the environment.
             </p>
             <ul class="services-list">
-              <li><i class="fas fa-recycle"></i> 95% Waste Recycled</li>
-              <li><i class="fas fa-heart"></i> Ponytail Donations</li>
-              <li><i class="fas fa-leaf"></i> 100% Vegan Products</li>
-              <li><i class="fas fa-map-marker-alt"></i> Australian Made</li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 640 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M112 224l56-96h96l-24-48H168L88 224h24zm416-64l-56 96h-96l24 48h72l80-144h-24zM208 416l56 96h96l-24 48H264l-80-144h24zM320 192l48 80h-96l48-80z"
+                  />
+                </svg>
+                95% Waste Recycled
+              </li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M462 62c-54-46-132-38-182 13L256 99l-24-24C182 24 104 16 50 62-15 117-10 217 56 278l176 160c13 12 33 12 46 0l176-160c66-61 71-161 8-216z"
+                  />
+                </svg>
+                Ponytail Donations
+              </li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M480 64C347 64 235 96 160 160 96 235 64 347 64 480c0 8 9 12 15 7 55-47 101-106 125-168 27-70 75-118 145-145 62-24 121-70 168-125 5-6 1-15-7-15z"
+                  />
+                </svg>
+                100% Vegan Products
+              </li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 384 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M192 0C86 0 0 86 0 192c0 111 192 320 192 320s192-209 192-320C384 86 298 0 192 0zm0 272a80 80 0 110-160 80 80 0 010 160z"
+                  />
+                </svg>
+                Australian Made
+              </li>
             </ul>
             <a href="sustainability.html" class="btn-primary">Learn More</a>
           </div>
           <div class="services-image">
-            <img
-              src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-              alt="Sustainable and Eco-Friendly Hair Products"
-              width="1000"
-              height="600"
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source
+                srcset="
+                  https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1000&q=70
+                "
+                media="(min-width: 769px)"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=500&q=70"
+                alt="Sustainable and Eco-Friendly Hair Products"
+                width="500"
+                height="300"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </picture>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="elements-section">
+    <section id="contact" class="elements-section cv-auto">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Visit Our Salon</h2>
@@ -349,14 +836,26 @@
         </div>
         <div class="services-content">
           <div class="services-image">
-            <img
-              src="Photos/Get in touch.jpg"
-              alt="7 Elements Hair Salon Interior - Get In Touch"
-              width="1000"
-              height="600"
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source
+                srcset="Photos/Get-in-touch-800.jpg 800w, Photos/Get in touch.jpg 1400w"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                media="(min-width: 769px)"
+                width="1000"
+                height="600"
+              />
+              <img
+                src="Photos/Get-in-touch-800.jpg"
+                srcset="Photos/Get-in-touch-800.jpg 800w, Photos/Get in touch.jpg 1400w"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                alt="7 Elements Hair Salon Interior - Get In Touch"
+                width="500"
+                height="300"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </picture>
           </div>
           <div class="services-text">
             <h2>Get In Touch</h2>
@@ -366,14 +865,65 @@
             </p>
             <ul class="services-list">
               <li>
-                <i class="fas fa-map-marker-alt"></i> 128 Carrington Street,
-                Riverstone NSW 2765
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 384 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M192 0C86 0 0 86 0 192c0 111 192 320 192 320s192-209 192-320C384 86 298 0 192 0zm0 272a80 80 0 110-160 80 80 0 010 160z"
+                  />
+                </svg>
+                128 Carrington Street, Riverstone NSW 2765
               </li>
-              <li><i class="fas fa-phone"></i> 02 7010 8324</li>
               <li>
-                <i class="fas fa-clock"></i> Tue-Fri: 9AM-5PM, Sat: 9AM-3PM
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M164 24l64 16c11 3 18 13 18 24v64c0 11-7 21-18 24l-38 10a256 256 0 00156 156l10-38c3-11 13-18 24-18h64c11 0 21 7 24 18l16 64c3 11-2 23-12 28-33 17-72 26-112 26C197 458 54 315 6 146c-1-5-2-9-3-14-2-9 3-19 12-23L136 12c9-5 20-4 28 3z"
+                  />
+                </svg>
+                02 7010 8324
               </li>
-              <li><i class="fas fa-phone"></i> Call for appointments only</li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M256 8a248 248 0 10248 248A248 248 0 00256 8zm16 120v120h112v48H224V128h48z"
+                  />
+                </svg>
+                Tue-Fri: 9AM-5PM, Sat: 9AM-3PM
+              </li>
+              <li>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M164 24l64 16c11 3 18 13 18 24v64c0 11-7 21-18 24l-38 10a256 256 0 00156 156l10-38c3-11 13-18 24-18h64c11 0 21 7 24 18l16 64c3 11-2 23-12 28-33 17-72 26-112 26C197 458 54 315 6 146c-1-5-2-9-3-14-2-9 3-19 12-23L136 12c9-5 20-4 28 3z"
+                  />
+                </svg>
+                Call for appointments only
+              </li>
             </ul>
             <a href="contact.html#book" class="btn-primary">Book Now</a>
           </div>
@@ -382,7 +932,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="faq-section">
+    <section id="faq" class="faq-section cv-auto">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Frequently Asked Questions</h2>
@@ -462,9 +1012,36 @@
 
     <!-- Scroll to top button (mobile only) -->
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-      <i class="fas fa-arrow-up"></i>
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        width="18"
+        height="18"
+        viewBox="0 0 448 512"
+      >
+        <path
+          fill="currentColor"
+          d="M201 137L7 331l55 55 113-113v239h98V273l113 113 55-55L247 137c-13-12-33-12-46 0z"
+        />
+      </svg>
     </button>
 
-    <script src="new-script.js"></script>
+    <script src="new-script.js" defer></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((registration) => {
+              console.log("SW registered: ", registration);
+            })
+            .catch((registrationError) => {
+              console.log("SW registration failed: ", registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

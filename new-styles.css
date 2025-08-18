@@ -28,14 +28,7 @@ body {
 }
 
 /* Optional initial fade only when .is-loading is present (toggled via JS), and respect prefers-reduced-motion */
-@media (prefers-reduced-motion: no-preference) {
-  html.is-loading body {
-    opacity: 0;
-  }
-  body {
-    transition: opacity 0.4s ease;
-  }
-}
+/* removed initial fade to improve FCP/SI */
 
 /* Focus visibility for keyboard users */
 :focus-visible {
@@ -80,7 +73,9 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-primary), system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
+  font-size-adjust: 0.5;
   line-height: 1.6;
   color: var(--charcoal);
   background: var(--white);
@@ -99,6 +94,11 @@ body {
   top: 0;
   width: 100%;
   background: rgba(255, 255, 255, 0.95);
+  /* Defer rendering of below-the-fold sections to reduce initial work and Speed Index */
+  .cv-auto {
+    content-visibility: auto;
+  }
+
   backdrop-filter: blur(10px);
   z-index: 1000;
   padding: 15px 0;
@@ -106,10 +106,26 @@ body {
   border-bottom: 1px solid rgba(244, 194, 194, 0.1);
 }
 
+/* Scrolled navbar state to avoid style writes in JS */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Defer rendering of below-the-fold sections to reduce initial work and Speed Index */
+.cv-auto { content-visibility: auto; }
+/* Lazy-render sections should be contain-visual to avoid scroll jank */
+.cv-auto { contain-intrinsic-size: 1px 1000px; }
+@supports not (contain-intrinsic-size: 1px 1000px) {
+  .cv-auto { min-height: 600px; }
+}
+
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 20px;
@@ -137,6 +153,28 @@ body {
 
 .logo a:hover img {
   opacity: 0.8;
+}
+
+/* Scroll-animated elements use class-based states only (avoid shifting items already in viewport) */
+/* initial states moved to .pre-animate; see class rules below */
+
+/* Class-driven animations to avoid JS style writes */
+.pre-animate {
+  opacity: 0;
+}
+.anim-fade-up {
+  transform: translateY(30px);
+}
+.anim-fade-left {
+  transform: translateX(-30px);
+}
+.anim-fade-right {
+  transform: translateX(30px);
+}
+.reveal {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .logo-text {
@@ -828,20 +866,31 @@ body.mobile-menu-open {
   height: 500px;
   background: var(--white);
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative; /* anchor absolutely positioned media */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
+/* Ensure picture fills the holder so the image covers fully */
+.services-image picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .services-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-  border-radius: 12px;
 }
 
 /* Services Grid */
@@ -1096,12 +1145,13 @@ body.mobile-menu-open {
 }
 
 .page-header h1 {
-  font-family: var(--font-display);
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
   font-size: 56px;
   font-weight: 700;
   color: var(--charcoal);
   margin-bottom: 20px;
   letter-spacing: -0.02em;
+  font-size-adjust: 0.46;
 }
 
 .page-header .highlight {

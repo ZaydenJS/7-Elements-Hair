@@ -1,4 +1,19 @@
-// 4 Elements Hair - Premium JavaScript
+// 4 Elements Hair - Optimized JavaScript
+
+// Use passive event listeners for better performance
+const passiveSupported = (() => {
+  let passive = false;
+  try {
+    const options = Object.defineProperty({}, "passive", {
+      get: () => (passive = true),
+    });
+    window.addEventListener("test", null, options);
+    window.removeEventListener("test", null, options);
+  } catch (err) {}
+  return passive;
+})();
+
+const eventOptions = passiveSupported ? { passive: true } : false;
 
 document.addEventListener("DOMContentLoaded", function () {
   // Respect reduced motion preference
@@ -6,7 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-  // Function to check if device is mobile
+  // Optimized mobile detection
+  const isMobile = window.innerWidth <= 768;
+
+  // Function to detect mobile devices
   function isMobileDevice() {
     return (
       window.innerWidth <= 768 ||
@@ -99,24 +117,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Navbar scroll effect
+  // Navbar scroll effect (class toggle to avoid style writes/reflow)
   const navbar = document.querySelector(".navbar");
   let lastScrollTop = 0;
 
-  window.addEventListener("scroll", function () {
+  function onScrollNav() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Add background when scrolled
+    if (!navbar) return;
     if (scrollTop > 50) {
-      navbar.style.background = "rgba(255, 255, 255, 0.98)";
-      navbar.style.boxShadow = "0 2px 20px rgba(0,0,0,0.1)";
+      navbar.classList.add("scrolled");
     } else {
-      navbar.style.background = "rgba(255, 255, 255, 0.95)";
-      navbar.style.boxShadow = "none";
+      navbar.classList.remove("scrolled");
     }
-
     lastScrollTop = scrollTop;
-  });
+  }
+  window.addEventListener("scroll", onScrollNav, eventOptions);
 
   // Intersection Observer for animations
   const observerOptions = {
@@ -127,8 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+        entry.target.classList.add("reveal");
       }
     });
   }, observerOptions);
@@ -237,16 +251,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Optional parallax effect for hero section (respect reduced motion)
-  if (!reduceMotion) {
-    window.addEventListener("scroll", function () {
-      const scrolled = window.pageYOffset;
-      const heroImage = document.querySelector(".hero-image-main");
+  // Optimized parallax effect for hero section (disable on mobile + respect reduced motion)
+  if (!reduceMotion && window.innerWidth > 1024) {
+    let ticking = false;
+    const heroImage = document.querySelector(".hero-image-main");
+
+    function updateParallax() {
       if (heroImage) {
+        const scrolled = window.pageYOffset;
         const rate = scrolled * -0.1;
         heroImage.style.transform = `translateY(${rate}px)`;
       }
-    });
+      ticking = false;
+    }
+
+    function requestParallaxUpdate() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener("scroll", requestParallaxUpdate, eventOptions);
   }
 
   // Form validation (if contact form is added later)
@@ -287,36 +313,84 @@ document.addEventListener("DOMContentLoaded", function () {
 
     elements.forEach((el) => {
       const animationType = el.getAttribute("data-animate");
-      el.style.opacity = "0";
+      el.classList.add("pre-animate");
 
       switch (animationType) {
         case "fadeInUp":
-          el.style.transform = "translateY(30px)";
+          el.classList.add("anim-fade-up");
           break;
         case "fadeInLeft":
-          el.style.transform = "translateX(-30px)";
+          el.classList.add("anim-fade-left");
           break;
         case "fadeInRight":
-          el.style.transform = "translateX(30px)";
+          el.classList.add("anim-fade-right");
           break;
         default:
-          el.style.transform = "translateY(30px)";
+          el.classList.add("anim-fade-up");
       }
 
       observer.observe(el);
     });
   }
 
+  // Handle hash navigation on page load
+  function handleHashOnLoad() {
+    const hash = window.location.hash;
+    if (hash === "#book" || hash === "#ready-to-book") {
+      // Small delay to ensure page is fully loaded
+      setTimeout(() => {
+        if (
+          hash === "#ready-to-book" ||
+          (hash === "#book" && isMobileDevice())
+        ) {
+          // On mobile or when specifically targeting ready-to-book, scroll to the card
+          scrollToElementCentered("#ready-to-book");
+        } else {
+          // On desktop, scroll to the general booking section
+          const targetElement = document.querySelector("#book");
+          if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 100; // Account for fixed navbar
+            window.scrollTo({
+              top: offsetTop,
+              behavior: "smooth",
+            });
+          }
+        }
+      }, 100);
+    }
+  }
+
   // Call initialization functions
   initScrollAnimations();
   handleBookingLinks();
+  handleHashOnLoad();
 
-  // Remove body opacity load hack; optional fade-in only if not reduced motion
-  if (!reduceMotion) {
-    document.documentElement.classList.add("is-loading");
-    window.addEventListener("load", function () {
-      document.documentElement.classList.remove("is-loading");
-    });
+  // Remove body opacity load hack to improve FCP/SI
+  // (no-op)
+  // Performance monitoring (Core Web Vitals)
+  if ("PerformanceObserver" in window) {
+    // Monitor Largest Contentful Paint
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        console.log("LCP:", entry.startTime);
+      }
+    }).observe({ entryTypes: ["largest-contentful-paint"] });
+
+    // Monitor First Input Delay
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        console.log("FID:", entry.processingStart - entry.startTime);
+      }
+    }).observe({ entryTypes: ["first-input"] });
+
+    // Monitor Cumulative Layout Shift
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        if (!entry.hadRecentInput) {
+          console.log("CLS:", entry.value);
+        }
+      }
+    }).observe({ entryTypes: ["layout-shift"] });
   }
 });
 
