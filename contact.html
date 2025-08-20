@@ -34,6 +34,29 @@
     </script>
 
     <link rel="stylesheet" href="new-styles.min.css" />
+    <style>
+      /* Make benefit icon sit directly next to the title text */
+      .booking-benefit {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .booking-benefit .benefit-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin: 0 0 8px 0;
+      }
+      .booking-benefit i {
+        margin-top: 0;
+      }
+      @media (max-width: 1024px) {
+        .booking-benefit .benefit-title {
+          justify-content: center;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation -->
@@ -153,33 +176,30 @@
 
             <div class="booking-benefits">
               <div class="booking-benefit">
-                <i class="fas fa-user-md"></i>
-                <div>
-                  <h4>Expert Consultation</h4>
-                  <p>
-                    Every appointment begins with a thorough consultation to
-                    understand your needs
-                  </p>
-                </div>
+                <h4 class="benefit-title">
+                  <i class="fas fa-user-md"></i> Expert Consultation
+                </h4>
+                <p>
+                  Every appointment begins with a thorough consultation to
+                  understand your needs
+                </p>
               </div>
               <div class="booking-benefit">
-                <i class="fas fa-leaf"></i>
-                <div>
-                  <h4>Sustainable Products</h4>
-                  <p>
-                    100% vegan, Australian-made products that are kind to your
-                    hair and environment
-                  </p>
-                </div>
+                <h4 class="benefit-title">
+                  <i class="fas fa-leaf"></i> Sustainable Products
+                </h4>
+                <p>
+                  100% vegan, Australian-made products that are kind to your
+                  hair and environment
+                </p>
               </div>
               <div class="booking-benefit">
-                <i class="fas fa-certificate"></i>
-                <div>
-                  <h4>Certified Expertise</h4>
-                  <p>
-                    Vic is a certified trichologist with 14+ years of experience
-                  </p>
-                </div>
+                <h4 class="benefit-title">
+                  <i class="fas fa-certificate"></i> Certified Expertise
+                </h4>
+                <p>
+                  Vic is a certified trichologist with 14+ years of experience
+                </p>
               </div>
             </div>
 
@@ -233,19 +253,31 @@
 
             <div class="location-features">
               <div class="location-feature">
-                <i class="fas fa-parking"></i>
+                <i
+                  class="fas fa-parking"
+                  style="filter: grayscale(1) brightness(0.3)"
+                ></i>
                 <span>Free Parking Available</span>
               </div>
               <div class="location-feature">
-                <i class="fas fa-wheelchair"></i>
+                <i
+                  class="fas fa-wheelchair"
+                  style="filter: grayscale(1) brightness(0.3)"
+                ></i>
                 <span>Wheelchair Accessible</span>
               </div>
               <div class="location-feature">
-                <i class="fas fa-bus"></i>
+                <i
+                  class="fas fa-bus"
+                  style="filter: grayscale(1) brightness(0.3)"
+                ></i>
                 <span>Public Transport Nearby</span>
               </div>
               <div class="location-feature">
-                <i class="fas fa-coffee"></i>
+                <i
+                  class="fas fa-coffee"
+                  style="filter: grayscale(1) brightness(0.3)"
+                ></i>
                 <span>Cafes & Shops Nearby</span>
               </div>
             </div>

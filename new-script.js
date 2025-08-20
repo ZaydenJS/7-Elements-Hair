@@ -139,30 +139,17 @@ document.addEventListener("DOMContentLoaded", function () {
     rootMargin: "0px 0px -50px 0px",
   };
 
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("reveal");
-      }
-    });
-  }, observerOptions);
+  // Intersection Observer disabled to prevent content hiding
+  // const observer = new IntersectionObserver(function (entries) {
+  //   entries.forEach((entry) => {
+  //     if (entry.isIntersecting) {
+  //       entry.target.classList.add("reveal");
+  //     }
+  //   });
+  // }, observerOptions);
 
-  // Animate elements on scroll
-  const animateElements = document.querySelectorAll(
-    ".element-card, .services-text, .services-image"
-  );
-  animateElements.forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    observer.observe(el);
-  });
-
-  // Stagger animation for element cards
-  const elementCards = document.querySelectorAll(".element-card");
-  elementCards.forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.1}s`;
-  });
+  // Keep content visible - no scroll animations to avoid hiding content
+  // (Removed scroll animations that were hiding sections)
 
   // Add hover effects for interactive elements
   const interactiveElements = document.querySelectorAll(
