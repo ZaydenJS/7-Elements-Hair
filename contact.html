@@ -4,10 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact - 7 Elements Hair | Book Appointment Riverstone</title>
-    <!-- Mobile status bar color matching -->
+    <!-- Mobile status bar color matching - force solid white to match navbar -->
     <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#ffffff"
+    />
     <meta name="msapplication-navbutton-color" content="#ffffff" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="light-content"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <meta
@@ -60,6 +73,11 @@
       @media (max-width: 1024px) {
         .booking-benefit .benefit-title {
           justify-content: center;
+        }
+        /* Force navbar to solid white on mobile to match status bar */
+        .navbar {
+          background: #ffffff !important;
+          backdrop-filter: none;
         }
       }
     </style>
