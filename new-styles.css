@@ -2607,9 +2607,39 @@ body.mobile-menu-open {
     align-self: center;
   }
 
-  /* 2) Meet Vic Section */
-  #meet-vic .services-content {
+  /* 2) About: Meet Vic */
+  #about .services-content {
     display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+  #about .services-text {
+    display: contents;
+  }
+  #about .services-text h2 {
+    order: 1;
+  }
+  #about .services-text > p {
+    order: 2;
+  }
+  #about .services-image {
+    order: 3;
+    height: 320px;
+    align-self: center;
+    margin: 0 auto;
+  }
+  #about .services-list {
+    order: 4;
+  }
+  #about .btn-primary {
+    order: 5;
+    align-self: center;
+  }
+
+  /* 2a) Meet Vic (home): title, short description, image, then quote and other text */
+  #meet-vic .services-content {
+    display: flex !important;
     flex-direction: column;
     gap: 24px;
     text-align: center;
@@ -2620,18 +2650,22 @@ body.mobile-menu-open {
   #meet-vic .services-text h2 {
     order: 1;
   }
-  #meet-vic .services-image {
+  /* First short description directly under title */
+  #meet-vic .services-text > p:nth-of-type(1) {
     order: 2;
+  }
+  /* Image directly below the first sentence */
+  #meet-vic .services-image {
+    order: 3;
     height: 320px;
     align-self: center;
     margin: 0 auto;
   }
-  #meet-vic .services-text > p:first-of-type {
-    order: 3;
-  }
-  #meet-vic .services-text blockquote {
+  /* Quote follows image */
+  #meet-vic blockquote {
     order: 4;
   }
+  /* Remaining paragraphs and button follow */
   #meet-vic .services-text > p:nth-of-type(2) {
     order: 5;
   }
