@@ -761,8 +761,8 @@ body.mobile-menu-open {
 .element-icon {
   width: 80px;
   height: 80px;
-  background: var(--white);
-  border: 2px solid var(--charcoal);
+  background: var(--soft-pink);
+  border: 2px solid var(--primary-pink);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -772,8 +772,8 @@ body.mobile-menu-open {
 }
 
 .element-card:hover .element-icon {
-  background: var(--charcoal);
-  border-color: var(--charcoal);
+  background: var(--primary-pink);
+  border-color: var(--primary-pink);
   transform: scale(1.1);
 }
 
@@ -785,7 +785,7 @@ body.mobile-menu-open {
 }
 
 .element-card:hover .element-icon svg {
-  color: var(--white);
+  color: var(--charcoal);
 }
 
 .element-card h3 {
@@ -1516,16 +1516,6 @@ body.mobile-menu-open {
   padding-left: 20px;
 }
 
-.philosophy-text > p::before {
-  content: '"';
-  position: absolute;
-  left: 0;
-  top: -10px;
-  font-size: 60px;
-  color: var(--primary-pink);
-  font-family: var(--font-display);
-}
-
 .philosophy-points {
   display: flex;
   flex-direction: column;
@@ -1538,22 +1528,38 @@ body.mobile-menu-open {
   gap: 16px;
 }
 
-.point-icon svg {
-  width: 18px;
-  height: 18px;
-  color: var(--primary-pink);
-  margin-top: 4px;
+/* Philosophy section uses services-list structure */
+.philosophy-section .services-list {
+  margin-bottom: 0;
 }
 
-.philosophy-point h4 {
+.philosophy-section .services-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  font-size: 16px;
+  color: var(--charcoal);
+}
+
+.philosophy-section .services-list svg {
+  color: var(--dark-grey);
+  margin-right: 16px;
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.philosophy-section .services-list h4 {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 600;
   color: var(--charcoal);
   margin-bottom: 8px;
+  margin-top: 0;
 }
 
-.philosophy-point p {
+.philosophy-section .services-list p {
   color: var(--dark-grey);
   font-size: 15px;
   line-height: 1.6;
