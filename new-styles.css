@@ -831,6 +831,17 @@ body.mobile-menu-open {
   line-height: 1.7;
 }
 
+.services-text blockquote {
+  font-size: 22px;
+  color: var(--dark-grey);
+  font-style: italic;
+  line-height: 1.6;
+  margin: 32px 0;
+  padding-left: 24px;
+  border-left: 4px solid var(--primary-pink);
+  position: relative;
+}
+
 .services-list {
   list-style: none;
   margin-bottom: 40px;
