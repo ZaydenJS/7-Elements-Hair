@@ -2753,7 +2753,7 @@ body.mobile-menu-open {
     order: 2;
   }
 
-  /* Mobile: place image between the intro and the points */
+  /* Mobile: place image between title and description, then bullet points */
   .philosophy-content {
     display: flex;
     flex-direction: column;
@@ -2765,13 +2765,13 @@ body.mobile-menu-open {
   .philosophy-text h2 {
     order: 1;
   }
-  .philosophy-text > p {
+  .philosophy-image {
     order: 2;
   }
-  .philosophy-image {
+  .philosophy-text > p {
     order: 3;
   }
-  .philosophy-points {
+  .philosophy-text .services-list {
     order: 4;
   }
 
