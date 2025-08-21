@@ -2753,7 +2753,7 @@ body.mobile-menu-open {
     order: 2;
   }
 
-  /* Mobile: place image between title and description, then bullet points */
+  /* Mobile: title, photo, description, then dot points */
   .philosophy-content {
     display: flex;
     flex-direction: column;
