@@ -57,7 +57,16 @@
         }
         .philosophy-section .philosophy-text > p {
           grid-area: desc;
-          text-align: center;
+          text-align: center !important; /* ensure it centers on mobile */
+          margin: 0 auto; /* center via margins as well */
+          max-width: 36ch; /* keep a comfortable readable width on mobile */
+          box-sizing: border-box; /* include padding in width */
+          /* Create hanging punctuation so the opening quote doesn't push the first line right */
+          text-indent: -0.5ch; /* pull first line slightly left */
+          padding-left: 0.5ch !important; /* offset the indent for the block */
+          padding-right: 0.5ch !important;
+          width: auto; /* let max-width control the width */
+          justify-self: center; /* center the block within the grid */
         }
         .philosophy-section .philosophy-image {
           grid-area: img;
