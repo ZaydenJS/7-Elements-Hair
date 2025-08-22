@@ -36,6 +36,83 @@
     </script>
 
     <link rel="stylesheet" href="new-styles.min.css" />
+    <style>
+      /* Mobile-only reorder for My Philosophy section */
+      @media (max-width: 768px) {
+        .philosophy-section .philosophy-content {
+          display: grid;
+          grid-template-areas:
+            "title"
+            "desc"
+            "img"
+            "list";
+          row-gap: 1.25rem;
+        }
+        .philosophy-section .philosophy-text {
+          display: contents;
+        }
+        .philosophy-section .philosophy-text > h2 {
+          grid-area: title;
+          text-align: center;
+        }
+        .philosophy-section .philosophy-text > p {
+          grid-area: desc;
+          text-align: center;
+        }
+        .philosophy-section .philosophy-image {
+          grid-area: img;
+        }
+        .philosophy-section .services-list {
+          grid-area: list;
+        }
+      }
+    </style>
+    <style>
+      @media (max-width: 768px) {
+        /* Mobile: place icon directly next to the list title; description below */
+        .philosophy-section .services-list {
+          padding-left: 0;
+        }
+        .philosophy-section .services-list li {
+          display: grid;
+          /* Center icon + title together while keeping description full width */
+          grid-template-columns: 1fr auto auto 1fr;
+          grid-template-areas:
+            "spacer-left icon title spacer-right"
+            "desc desc desc desc";
+          column-gap: 0.5rem;
+          row-gap: 0.25rem;
+          align-items: center;
+          list-style: none;
+        }
+        .philosophy-section .services-list li > svg {
+          grid-area: icon;
+          width: 18px;
+          height: 18px;
+          justify-self: end; /* nudge icon directly next to the title */
+        }
+        .philosophy-section .services-list li > div {
+          /* wrapper around h4 + p */
+          display: contents;
+        }
+        .philosophy-section .services-list li > div > h4 {
+          grid-area: title;
+          margin: 0;
+          display: inline-flex;
+          align-items: center;
+          text-align: center; /* center the title text */
+          justify-content: center; /* center content within the h4 */
+          justify-self: center; /* center the h4 next to the icon */
+        }
+        .philosophy-section .services-list li > div > p {
+          grid-area: desc;
+          margin: 0;
+          text-align: center; /* center description */
+          justify-self: center; /* center block */
+          max-width: 34ch; /* aim for ~2 lines; will wrap */
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation -->
@@ -203,17 +280,6 @@
               their hair is in the best possible condition."
             </p>
 
-            <div class="philosophy-image">
-              <img
-                src="Photos/b4 n after.png"
-                alt="Before and After Hair Transformation Results"
-                width="1000"
-                height="600"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
             <ul class="services-list">
               <li>
                 <svg
@@ -296,6 +362,16 @@
                 </div>
               </li>
             </ul>
+          </div>
+          <div class="philosophy-image">
+            <img
+              src="Photos/b4 n after.png"
+              alt="Before and After Hair Transformation Results"
+              width="1000"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>
