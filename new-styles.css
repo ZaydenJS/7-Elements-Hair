@@ -1856,7 +1856,7 @@ body.mobile-menu-open {
   justify-content: center;
 }
 .practice-features i {
-  margin-right: 8px;
+  margin-right: 0; /* use gap on li for balanced centering */
 }
 
 .practice-card:hover {
@@ -1904,15 +1904,21 @@ body.mobile-menu-open {
 .practice-features li {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  justify-content: center; /* center icon + text as a unit */
+  gap: 10px; /* balanced spacing between icon and text */
+  width: max-content; /* shrink to content width for true visual centering */
+  margin: 0 auto 12px; /* center each bullet line */
   font-size: 15px;
   color: var(--charcoal);
   line-height: 1.4;
+  width: fit-content; /* avoid overflow, allow wrapping */
+  text-align: center; /* optical centering for wrapped lines */
+  transform: translateX(-6px); /* slight left nudge for true optical center */
 }
 
 .practice-features i {
   color: var(--primary-pink);
-  margin-right: 12px;
+  margin-right: 0; /* spacing handled by gap */
   font-size: 16px;
   flex-shrink: 0;
   display: flex;
@@ -2514,6 +2520,7 @@ body.mobile-menu-open {
 @media (max-width: 768px) {
   .hero {
     padding-top: 110px; /* Adjust for smaller mobile navbar */
+    padding-bottom: 16px; /* create space under buttons */
   }
 
   .hero-content {
@@ -2533,6 +2540,37 @@ body.mobile-menu-open {
 
   .hero-stats {
     justify-content: center;
+  }
+
+  /* Reorder hero for mobile: text -> image -> stats -> buttons */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-text {
+    display: contents;
+  }
+  .hero-text h1 {
+    order: 1;
+  }
+  .hero-text p {
+    order: 2;
+  }
+  .hero-visual {
+    order: 3;
+  }
+  .hero-stats {
+    order: 4;
+  }
+  .hero-buttons {
+    order: 5;
+  }
+  /* Move buttons closer to stats on mobile */
+  .hero-stats {
+    margin-bottom: 16px;
+  }
+  .hero-buttons {
+    margin-top: -15px;
   }
 
   .hero-visual {
@@ -3140,6 +3178,7 @@ body.mobile-menu-open {
 @media (max-width: 480px) {
   .hero {
     padding-top: 100px; /* Adjust for smallest mobile navbar */
+    padding-bottom: 16px; /* space under buttons */
   }
 
   .hero-text h1 {
