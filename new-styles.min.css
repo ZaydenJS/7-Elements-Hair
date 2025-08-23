@@ -844,6 +844,8 @@ body.mobile-menu-open {
   font-weight: 600;
   color: var(--charcoal);
   margin-bottom: 16px;
+  line-height: 1.2;
+  min-height: 2.6em;
 }
 .service-card p {
   color: var(--dark-grey);
@@ -853,13 +855,7 @@ body.mobile-menu-open {
   flex-grow: 1;
   min-height: 120px;
 }
-.service-card-link:nth-child(5).service-card p {
-  min-height: 120px;
-  padding-top: 40px;
-}
-.service-card-link:nth-child(5).service-card .service-features {
-  padding-top: 40px;
-}
+
 .service-features {
   list-style: none;
   margin-bottom: 24px;
@@ -1008,6 +1004,8 @@ body.mobile-menu-open {
   font-weight: 600;
   color: var(--charcoal);
   margin-bottom: 16px;
+  line-height: 1.2;
+  min-height: 2.6em;
 }
 .service-card p {
   color: var(--dark-grey);
@@ -2798,13 +2796,14 @@ body.mobile-menu-open {
     text-align: center;
   }
   .service-features {
-    flex-grow: 1;
+    flex-grow: 0;
+    margin-top: auto;
   }
   .service-features li {
     justify-content: center;
   }
   .service-price {
-    margin-top: auto;
+    margin-top: 16px;
     text-align: center;
   }
 }
