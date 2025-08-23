@@ -2525,7 +2525,7 @@ body.mobile-menu-open {
 
   .hero-content {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 20px;
     text-align: center;
   }
 
@@ -2536,6 +2536,7 @@ body.mobile-menu-open {
 
   .hero-text h1 {
     font-size: 52px;
+    margin-bottom: 12px;
   }
 
   .hero-stats {
@@ -2555,6 +2556,7 @@ body.mobile-menu-open {
   }
   .hero-text p {
     order: 2;
+    margin-bottom: 16px;
   }
   .hero-visual {
     order: 3;
@@ -3188,7 +3190,7 @@ body.mobile-menu-open {
 
   .hero-text p {
     font-size: 18px;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 
   /* Mobile dropdown positioning for small screens */
