@@ -1045,40 +1045,6 @@ body.mobile-menu-open {
   color: var(--primary-pink);
   text-align: right;
 }
-
-/* Ensure Services page cards are perfectly centered (all breakpoints) */
-.services-grid .service-card {
-  align-items: center;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-.services-grid .service-icon {
-  margin: 0 auto 24px;
-}
-.services-grid .service-card h3,
-.services-grid .service-card p,
-.services-grid .service-features,
-.services-grid .service-price {
-  text-align: center;
-}
-.services-grid .service-features {
-  display: inline-grid;
-  grid-auto-rows: auto;
-  row-gap: 12px;
-  justify-items: center;
-  padding-left: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-.services-grid .service-features li {
-  justify-content: center;
-}
-.services-grid .service-price {
-  margin-top: 8px;
-  text-align: center;
-}
-
 .process-section {
   padding: var(--section-padding);
   background: var(--soft-pink);
@@ -1086,58 +1052,6 @@ body.mobile-menu-open {
 .process-steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-/* Absolute centering rail: forces everything to the exact midline */
-.services-grid .service-card > .service-icon,
-.services-grid .service-card > h3,
-.services-grid .service-card > p,
-.services-grid .service-card > .service-features,
-.services-grid .service-card > .service-price {
-  align-self: center;
-}
-
-/* Bullet rows: perfectly symmetrical columns around the center */
-.services-grid .service-features li {
-  display: grid;
-  grid-template-columns: 24px auto 24px; /* icon | text | spacer */
-  gap: 8px;
-  align-items: center;
-  justify-items: center;
-  text-align: center;
-}
-.services-grid .service-features li i {
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.services-grid .service-features li::after {
-  content: "";
-  width: 24px;
-  height: 1px;
-}
-
-/* Titles/descriptions get a consistent max width so every card wraps similarly */
-.services-grid .service-card h3,
-.services-grid .service-card p,
-.services-grid .service-features,
-.services-grid .service-price {
-  max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-  @media (min-width: 1025px) {
-    .services-grid .service-card h3,
-    .services-grid .service-card p,
-    .services-grid .service-features,
-    .services-grid .service-price {
-      max-width: 360px;
-    }
-  }
-
   gap: 40px;
   margin-top: 60px;
 }
@@ -2227,15 +2141,20 @@ body.mobile-menu-open {
   }
   .hero-content {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 12px;
     text-align: center;
   }
   .hero-text::before {
     left: 50%;
     transform: translateX(-50%);
   }
+  .hero-subtitle {
+    margin-bottom: 6px;
+  }
+
   .hero-text h1 {
     font-size: 52px;
+    margin-bottom: 6px;
   }
   .hero-stats {
     justify-content: center;
@@ -2253,6 +2172,7 @@ body.mobile-menu-open {
   }
   .hero-text p {
     order: 2;
+    margin-bottom: 8px;
   }
   .hero-visual {
     order: 3;
@@ -2740,7 +2660,7 @@ body.mobile-menu-open {
   }
   .hero-text p {
     font-size: 18px;
-    margin-bottom: 32px;
+    margin-bottom: 10px;
   }
   .nav-menu.mobile-active {
     top: 100px;
