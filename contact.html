@@ -53,34 +53,6 @@
     </script>
 
     <link rel="stylesheet" href="new-styles.min.css" />
-    <style>
-      /* Make benefit icon sit directly next to the title text */
-      .booking-benefit {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-      .booking-benefit .benefit-title {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin: 0 0 8px 0;
-      }
-      .booking-benefit i {
-        margin-top: 0;
-      }
-      @media (max-width: 1024px) {
-        .booking-benefit .benefit-title {
-          justify-content: center;
-        }
-        /* Force navbar to solid white on mobile to match status bar */
-        .navbar {
-          background: #ffffff !important;
-          backdrop-filter: none;
-        }
-      }
-    </style>
   </head>
   <body>
     <!-- Navigation -->
@@ -281,37 +253,29 @@
             <h3>Easy to Find</h3>
             <p>
               Our salon is conveniently located on Carrington Street in
-              Riverstone, easily accessible from Wollongong, Shellharbour, and
-              surrounding areas.
+              Riverstone, easily accessible from across Northwest Sydney and
+              surrounding suburbs.
             </p>
 
             <div class="location-features">
               <div class="location-feature">
                 <i
-                  class="fas fa-coffee"
-                  style="filter: grayscale(1) brightness(0.3)"
+                  class="fas fa-coffee icon-muted"
+                  aria-hidden="true"
+                  role="presentation"
                 ></i>
                 <span>Cafes & Shops Nearby</span>
               </div>
               <div class="location-feature">
-                <i
-                  class="fas fa-wheelchair"
-                  style="filter: grayscale(1) brightness(0.3)"
-                ></i>
+                <i class="fas fa-wheelchair icon-muted"></i>
                 <span>Wheelchair Accessible</span>
               </div>
               <div class="location-feature">
-                <i
-                  class="fas fa-parking"
-                  style="filter: grayscale(1) brightness(0.3)"
-                ></i>
+                <i class="fas fa-parking icon-muted"></i>
                 <span>Free Parking Available</span>
               </div>
               <div class="location-feature">
-                <i
-                  class="fas fa-bus"
-                  style="filter: grayscale(1) brightness(0.3)"
-                ></i>
+                <i class="fas fa-bus icon-muted"></i>
                 <span>Public Transport Nearby</span>
               </div>
             </div>
@@ -319,16 +283,16 @@
             <div class="directions">
               <h4>Getting Here</h4>
               <p>
-                <strong>From Albion Park:</strong> Take Tongarra Road east for 8
-                minutes
+                <strong>From Schofields:</strong> Head north via Railway Terrace
+                for 8 minutes
               </p>
               <p>
-                <strong>From Shellharbour:</strong> Head to Carrington Street
-                for 10 minutes
+                <strong>From Blacktown:</strong> Take Richmond Road and Garfield
+                Road West for 10 minutes
               </p>
               <p>
-                <strong>From Wollongong:</strong> Take the Princes Highway south
-                for 15 minutes
+                <strong>From Rouse Hill:</strong> Take Windsor Road and Garfield
+                Road West for 15 minutes
               </p>
             </div>
           </div>
@@ -391,7 +355,7 @@
             their hair transformation needs
           </p>
           <div class="cta-buttons">
-            <a href="tel:0270108324" class="btn-primary">Call 02 7010 8324</a>
+            <a href="tel:0270108324" class="btn-primary">Book Now</a>
             <a href="services.html" class="btn-secondary">View Services</a>
           </div>
         </div>

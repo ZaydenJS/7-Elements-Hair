@@ -1098,6 +1098,20 @@ body.mobile-menu-open {
   padding: var(--section-padding);
   background: var(--charcoal);
   text-align: center;
+  position: relative;
+}
+
+/* Desktop separator line above CTA sections */
+.cta-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--container-max);
+  height: 1px;
+  background: rgba(244, 194, 194, 0.3);
 }
 
 .cta-content h2 {
@@ -3184,6 +3198,11 @@ body.mobile-menu-open {
     height: 20px;
     margin-right: 8px;
     flex-shrink: 0;
+  }
+
+  /* Hide desktop CTA separator on mobile since mobile already has its own separator */
+  .cta-section::before {
+    display: none;
   }
 }
 

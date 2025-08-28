@@ -13,7 +13,7 @@
     />
 
     <!-- Performance and SEO meta tags -->
-    <meta name="theme-color" content="#f4c2c2" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="format-detection" content="telephone=no" />
@@ -83,15 +83,7 @@
         font-weight: 500;
         transition: color 0.3s ease;
       }
-      .book-btn {
-        background: var(--primary-pink);
-        color: var(--charcoal);
-        padding: 12px 24px;
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-      }
+      /* Defer to global button styles in new-styles.min.css */
 
       /* Critical hero styles */
       .hero {
@@ -193,10 +185,9 @@
       }
     </style>
 
-    <!-- Preload and load minified CSS -->
-    <!-- Preload + render-blocking stylesheet to avoid FOUC/CLS -->
-    <link rel="preload" href="styles.min.css?v=20250817-2" as="style" />
-    <link rel="stylesheet" href="styles.min.css?v=20250817-2" />
+    <!-- Global CSS -->
+    <link rel="preload" href="new-styles.min.css" as="style" />
+    <link rel="stylesheet" href="new-styles.min.css" />
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -210,6 +201,14 @@
       as="image"
       imagesrcset="Photos/Hero-800.jpg 800w, Photos/Hero.jpg 1200w"
       imagesizes="(max-width: 768px) 100vw, 50vw"
+      fetchpriority="high"
+    />
+
+    <!-- Preload Visit Our Salon image for faster loading -->
+    <link
+      rel="preload"
+      href="Photos/Get-in-touch-800.jpg"
+      as="image"
       fetchpriority="high"
     />
 
@@ -836,22 +835,21 @@
           <div class="services-image">
             <picture>
               <source
-                srcset="Photos/Get-in-touch-800.jpg 800w, Photos/Get in touch.jpg 1400w"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                media="(min-width: 769px)"
-                width="1000"
+                srcset="Photos/Get-in-touch-800.jpg"
+                media="(max-width: 768px)"
+                width="800"
                 height="600"
               />
               <img
                 src="Photos/Get-in-touch-800.jpg"
-                srcset="Photos/Get-in-touch-800.jpg 800w, Photos/Get in touch.jpg 1400w"
+                srcset="Photos/Get-in-touch-800.jpg 800w"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 alt="7 Elements Hair Salon Interior - Get In Touch"
-                width="500"
-                height="300"
-                loading="lazy"
+                width="800"
+                height="600"
+                loading="eager"
                 decoding="async"
-                fetchpriority="low"
+                fetchpriority="high"
               />
             </picture>
           </div>
@@ -916,7 +914,7 @@
                     d="M256 8a248 248 0 10248 248A248 248 0 00256 8zm16 120v120h112v48H224V128h48z"
                   />
                 </svg>
-                Tue-Fri: 9AM-5PM, Sat: 9AM-3PM
+                Tue-Fri: 9AM-5PM<br />Saturday: 9AM-3PM
               </li>
               <li>
                 <svg
@@ -978,7 +976,7 @@
             <h3>What if I need to cancel or reschedule?</h3>
             <p>
               We understand life happens! Please give us at least 24 hours
-              notice by calling or texting to avoid any fees.
+              notice for cancellations or rescheduling to avoid any fees.
             </p>
           </div>
         </div>
